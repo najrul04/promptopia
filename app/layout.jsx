@@ -1,9 +1,8 @@
 "use client";
 
-import React, { Component } from 'react'
 import '@styles/globals.css';
 
-import Provider from 'Component/Provider'
+import Provider from 'components/Provider'
 import Nav from '@components/Nav';
 
 export const metadata = {
@@ -15,6 +14,7 @@ const RootLayout = ({children}) => {
   return (
     <html lang='en'>
         <body>
+        <Provider>
             <div className="main">
                 <div className='gradient'/>
             </div>
@@ -22,6 +22,7 @@ const RootLayout = ({children}) => {
                 <Nav/>
                 {children}
             </main>
+        </Provider>
         </body>
     </html>
   )
