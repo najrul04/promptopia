@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import '@styles/globals.css';
 
-// import Provider from 'Component/Provider'
+import Provider from 'Component/Provider'
 import Nav from '@components/Nav';
 
 export const metadata = {

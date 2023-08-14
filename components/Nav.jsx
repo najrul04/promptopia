@@ -42,27 +42,30 @@ const Nav = () => {
 
         <div className="sm:flex hidden">
         {isUserLoggedIn ? (
-            <div className='flex gap-3 md:gap-5'>
-                <Link href="/create-prompt" className='black_btn'>
-                Create post
-                </Link>
-                <button type='button' onClick={signOut} className='outline_btn'>
-                    Sign Out
-                </button>
+           <div className='flex gap-3 md:gap-5'>
+           <Link href='/create-prompt' className='black_btn'>
+             Create Post
+           </Link>
 
-                <Link href="/profile">
-                    <Image
+           <button type='button' onClick={signOut} className='outline_btn'>
+             Sign Out
+           </button>
+                 
+                  <Link href='/profile'>
+              <Image
                 src="/public/assets/images/logo.svg"
                 width={37}
                 height={37}
                 className='rounded-full'
-                alt='profile'/>
-                </Link>
+                alt='profile'
+              />
+            </Link>
 
-            </div> ) : (
+            </div> 
+            ) : (
 
             <>
-              {providers &&
+               {providers &&
               Object.values(providers).map((provider) => (
                 <button
                   type='button'
@@ -75,10 +78,9 @@ const Nav = () => {
                   Sign in
                 </button>
               ))}
-            </>
-        )
-        }
-        </div>
+          </>
+        )}
+      </div>
 
         
         {/* Mobile Navigation */}
@@ -87,33 +89,62 @@ const Nav = () => {
           {isUserLoggedIn ? (
             <div>
               <Image
-           src="/public/assets/images/logo.svg"
-           width={37}
-           height={37}
-           className='rounded-full'
-           alt='profile'
-           onClick={() => {}}
-        />
+                src="/public/assets/images/logo.svg"
+                width={37}
+                height={37}
+                className='rounded-full'
+                alt='profile'
+                onClick={() => setToggleDropdown((prev) => !prev)}
+              />
+
+              {toggleDropdown && (
+              <div className='dropdown'>
+                <Link
+                  href='/profile'
+                  className='dropdown_link'
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  My Profile
+                </Link>
+                <Link
+                  href='/create-prompt'
+                  className='dropdown_link'
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  Create Prompt
+                </Link>
+                <button
+                  type='button'
+                  onClick={() => {
+                    setToggleDropdown(false);
+                    signOut();
+                  }}
+                  className='mt-5 w-full black_btn'
+                >
+                  Sign Out
+                </button>
+                </div>
+              )}
+
             </div>
           ) : (
             <>
-            {providers &&
-            Object.values(providers).map((provider) => (
-              <button
-                type='button'
-                key={provider.name}
-                onClick={() => {
-                  signIn(provider.id);
-                }}
-                className='black_btn'
-              >
-                Sign in
-              </button>
-            ))}
+             {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  type='button'
+                  key={provider.name}
+                  onClick={() => {
+                    signIn(provider.id);
+                  }}
+                  className='black_btn'
+                >
+                  Sign in
+                </button>
+              ))}
           </>
-          )}
-        </div>
-
+        )}
+      </div>
     </nav>
   )
 }
