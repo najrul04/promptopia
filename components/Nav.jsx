@@ -8,7 +8,7 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import Provider from './Provider';
 
 const Nav = () => {
-    const isUserLoggedIn = true;
+    const { data:session } = useSession();
 
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false)
