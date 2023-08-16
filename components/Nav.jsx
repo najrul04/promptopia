@@ -41,7 +41,7 @@ const Nav = () => {
         {/* Desktop Navigation */}
 
         <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
            <div className='flex gap-3 md:gap-5'>
            <Link href='/create-prompt' className='black_btn'>
              Create Post
@@ -86,7 +86,7 @@ const Nav = () => {
         {/* Mobile Navigation */}
 
         <div className='sm:hidden flex relative'>
-          {isUserLoggedIn ? (
+          {session?.user ? (
             <div>
               <Image
                 src="../public/assets/images/logo.svg"
